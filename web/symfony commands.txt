@@ -1,0 +1,102 @@
+Generate Project Command
+--------------------------
+composer create-project symfony/framework-standard-edition myProj
+give the database name : myproj
+keep rest settings to default
+
+Create Database
+------------------
+php bin/console doctrine:database:create
+ 
+
+/*************************** Generate Bundle ***************************************/ 
+Generate Bundle
+------------------
+php bin/console generate:bundle --namespace=myPractice/MyPracticeBundle --format=yml
+bundle namespace : myPractice/MyPracticeBundle
+bunle name : MyPracticeBundle
+
+If the generate:bundle command returns an error about registering the bundle namespace in composer.json, add the following line to your composer.json file within the psr-4 section:
+
+"Acme\\Bundle\\BlogBundle\\": "src/Acme/Bundle/BlogBundle"
+
+for example:
+-------------------
+"autoload": {
+    "psr-4": {
+        "Acme\\Bundle\\BlogBundle\\": "src/Acme/Bundle/BlogBundle"
+    },
+    "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
+},
+
+), 
+
+OR
+----
+"myPractice\\MyPracticeBundle\\": "src/myPractice/MyPracticeBundle"
+
+- then execute the following command to regenerate the autoload files:
+	composer dump-autoload
+ 
+Links:
+--------
+https://symfony.com/doc/current/bundles/SensioGeneratorBundle/commands/generate_bundle.html
+https://github.com/symfony/symfony/issues/23630
+
+Facing issues with new bundles route(MyPractice)
+-------------------------------------------------
+- Change the route in routing.yml
+- Update the template path in controller to : 
+	return $this->render('@MyPractice/Default/index.html.twig');
+- Also change including bundles name to 
+	{% extends '@MyPractice/Layout/layout.html.twig' %}
+
+/*************************** Generate Bundle ***************************************/ 
+
+
+	
+/*************************** For web/bundles ***************************************/
+https://symfony.com/doc/3.4/frontend/assetic/asset_management.html
+composer require symfony/assetic-bundle
+
+php -d memory_limit=-1 C:/ProgramData/ComposerSetup/bin/composer.phar require symfony/assetic-bundle
+//php -d memory_limit=-1 composer.phar require symfony/assetic-bundle
+
+OR
+----
+https://symfony.com/doc/3.4/frontend.html
+Symfony ships with a pure-JavaScript library - called Webpack Encore - that makes working with CSS and JavaScript a joy. You can use it, use something else, or just create static CSS and JS files in your web/ directory and include them in your templates.
+
+
+OR
+----
+https://symfonycasts.com/screencast/symfony3/layout-assets
+/*************************** For web/bundles ***************************************/
+
+
+
+/*************** Composer update ******************************************************/
+- If eror in the following command
+	php composer.phar update
+- Then use the below cmd
+	php -d memory_limit=-1 C:/ProgramData/ComposerSetup/bin/composer.phar update
+/*************** Composer update ******************************************************/
+
+
+/****************************** Installing FOSUserBundle ******************************************************/
+https://symfony.com/doc/2.0/bundles/FOSUserBundle/index.html
+
+Composer Command to install FOSUserBundle
+-----------------------------------------------
+composer require friendsofsymfony/user-bundle "~2.0"
+
+/****************************** Installing FOSUserBundle ******************************************************/
+
+
+
+
+For github repositories
+---------------------------
+https://github.com/KnpLabs/php-github-api
+
+
